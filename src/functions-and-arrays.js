@@ -57,13 +57,13 @@ function sum(mixedArr) {
   }
   let addAll = 0;
   for (let mix of mixedArr) {
-    if (typeof mix === "Boolean") {
+    if (typeof mix === "boolean") {
       addAll += Number(mix);
-    } else if (typeof mix === "String") {
+    } else if (typeof mix === "string") {
       addAll += mix.length;
     } else if (typeof mix === "number") {
       addAll += mix;
-    } else if (typeof mix === []) {
+    } else {
       throw new Error("This data type is not supported");
     }
   }
@@ -97,8 +97,17 @@ const wordsArr = [
   "palace",
 ];
 
-function averageWordLength() {}
-
+function averageWordLength(wordsArr) {
+  if (!wordsArr.length) {
+    return null;
+  }
+  let average = 0;
+  for (let palabra of wordsArr) {
+    average += palabra.length / wordsArr.length;
+  }
+  return average;
+}
+averageWordLength(wordsArr);
 // Bonus - Iteration #4.1
 function avg() {}
 
@@ -117,7 +126,20 @@ const wordsUnique = [
   "bring",
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(wordsUnique) {
+  if (!wordsUnique.length) {
+    return null;
+  }
+  let uniqueArray = [];
+
+  for (let kalima = 0; kalima < wordsUnique.length; kalima++) {
+    if (wordsUnique.indexOf(wordsUnique[kalima]) === kalima) {
+      uniqueArray.push(wordsUnique[kalima]);
+    }
+  }
+  return uniqueArray;
+}
+uniquifyArray(wordsUnique);
 
 // Iteration #6: Find elements
 const wordsFind = [
@@ -131,7 +153,19 @@ const wordsFind = [
   "disobedience",
 ];
 
-function doesWordExist() {}
+function doesWordExist(wordsFind, search) {
+  if (!wordsFind.length) {
+    return null;
+  }
+  for (let word of wordsFind) {
+    if (wordsFind.includes(search)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+}
+console.log(doesWordExist(wordsFind, "matter"));
 
 // Iteration #7: Count repetition
 const wordsCount = [
@@ -148,7 +182,17 @@ const wordsCount = [
   "matter",
 ];
 
-function howManyTimes() {}
+function howManyTimes(wordsCount, search2) {
+  if (!wordsCount) {
+    return 0;
+  }
+  let repeated = 0;
+  for (let search of wordsCount) {
+    if (wordsCount === search) {
+      repeated += 1;
+    }
+  }
+}
 
 // Iteration #8: Bonus
 const matrix = [
