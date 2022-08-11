@@ -25,15 +25,11 @@ function findLongestWord(words) {
   }
   let longestW = "";
   for (let word of words) {
-    if (longestW.length > word.length) {
-      return longestW;
-    } else if (longestW.length === word.length) {
-      return longestW;
-    } else if (longestW.length < word.length) {
-      return (longestW = word);
+    if (longestW.length < word.length) {
+      longestW = word;
     }
-    return longestW;
   }
+  return longestW;
 }
 // Iteration #3: Calculate the sum
 const numbers = [6, 12, 1, 18, 13, 16, 2, 1, 8, 10];
@@ -63,7 +59,7 @@ function sum(mixedArr) {
       addAll += mix.length;
     } else if (typeof mix === "number") {
       addAll += mix;
-    } else {
+    } else if (typeof mix === "object") {
       throw new Error("This data type is not supported");
     }
   }
@@ -109,7 +105,11 @@ function averageWordLength(wordsArr) {
 }
 averageWordLength(wordsArr);
 // Bonus - Iteration #4.1
-function avg() {}
+function avg(listWords) {
+  if (!listWords.length) {
+    return null;
+  }
+}
 
 // Iteration #5: Unique arrays
 const wordsUnique = [
@@ -137,6 +137,11 @@ function uniquifyArray(wordsUnique) {
       uniqueArray.push(wordsUnique[kalima]);
     }
   }
+  /* 
+  for (let word of list){
+
+  }
+  */
   return uniqueArray;
 }
 uniquifyArray(wordsUnique);
@@ -164,6 +169,9 @@ function doesWordExist(wordsFind, search) {
       return false;
     }
   }
+  //other two solutions
+  // return list.includes(search)
+  // return list.indexOf(search) >= 0;
 }
 console.log(doesWordExist(wordsFind, "matter"));
 
@@ -183,11 +191,8 @@ const wordsCount = [
 ];
 
 function howManyTimes(wordsCount, search) {
-  if (!wordsCount) {
-    return 0;
-  }
   let repeated = 0;
-  for (word of wordsCount) {
+  for (let word of wordsCount) {
     if (search === word) {
       repeated++;
     }
