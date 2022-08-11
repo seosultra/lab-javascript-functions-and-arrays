@@ -182,18 +182,19 @@ const wordsCount = [
   "matter",
 ];
 
-function howManyTimes(wordsCount, search2) {
+function howManyTimes(wordsCount, search) {
   if (!wordsCount) {
     return 0;
   }
   let repeated = 0;
-  for (let search of wordsCount) {
-    if (wordsCount === search) {
-      repeated += 1;
+  for (word of wordsCount) {
+    if (search === word) {
+      repeated++;
     }
   }
+  return repeated;
 }
-
+console.log(howManyTimes(wordsCount, "matter"));
 // Iteration #8: Bonus
 const matrix = [
   [8, 2, 22, 97, 38, 15, 0, 40, 0, 75, 4, 5, 7, 78, 52, 12, 50, 77, 91, 8],
